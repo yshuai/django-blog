@@ -1,8 +1,8 @@
-from django.conf.urls import  url
-
+from django.conf.urls import url
 from . import views
 
+app_name = 'blog'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^post/(?P<pk>[0-9]+)/$', views.detail, name='detail'),
 ]
-#第一个参数是网址，第二个参数是处理函数，name将作为处理函数 index 的别名
