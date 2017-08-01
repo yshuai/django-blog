@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.six import python_2_unicode_compatible
+# from django.db.models.aggregates import Count
 
 # Create your models here.
 class Category(models.Model):
@@ -31,3 +32,8 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
+
+    class Meta:
+        ordering = ['-created_time']
+
+# category_list = Category.objects.annotate(num_posts=Count('post'))
